@@ -20,9 +20,9 @@ public class Book extends Library_material {
 	 * @param publisher
 	 * @param iSBN
 	 */
-	public Book(int id, String title, Boolean availability, int max_reservation_period, String genre, int edition,
+	public Book( String title, Boolean availability, int max_reservation_period, String genre, int edition,
 			Date publication_date, String publisher, String iSBN, Author author) {
-		super(id, title, availability, max_reservation_period, genre);
+		super( title, availability, max_reservation_period, genre);
 		this.edition = edition;
 		this.publication_date = publication_date;
 		this.publisher = publisher;

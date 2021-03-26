@@ -9,8 +9,8 @@ public class Test {
 		
 		/**  creation of a new student **/ 
 		//the two student are not blacklisted initially
-		User alireza = new Student(1,"Alireza","alireza@gmail.com","5147835678", 3, false, "xxxx12345@", "encs1");
-		User issam = new Student(2,"issam","issam@gmail.com","51478357654", 3, false, "xxxx6789!", "encs2");
+		User alireza = new Student("Alireza","alireza@gmail.com","5147835678", 3, false, "xxxx12345@", "encs1");
+		User issam = new Student("issam","issam@gmail.com","51478357654", 3, false, "xxxx6789!", "encs2");
 		
 		/** creation of an author named John Doe **/
 		Author john_doe = new Author("JOhn Doe", "Great science author living in Canada with his wife and 5 kids");
@@ -25,7 +25,7 @@ public class Test {
 		//Author = John Doe
 		//(int id, String title, Boolean availability, int max_reservation_period, String genre, int edition,
 		//Date publication_date, String publisher, String iSBN, Author author)
-		Library_material book_science_grade3 = new Book(1,"book of science for grade 3",true,7,"science",3,new Date("01/03/2020"),"Gilbert Edition","IS123456", john_doe);
+		Library_material book_science_grade3 = new Book("book of science for grade 3",true,7,"science",3,new Date("01/03/2020"),"Gilbert Edition","IS123456", john_doe);
 		
 		
 		/**  creation of a periodical instance **/
@@ -33,11 +33,11 @@ public class Test {
 		//genre = nature
 		//publication date = 15/02/2021
 	
-		Library_material magazine_of_nature = new Periodical(1,"Magazine of Nature and Wildlife",true, 10, "nature", new Date("15/02/2020"));
+		Library_material magazine_of_nature = new Periodical("Magazine of Nature and Wildlife",true, 10, "nature", new Date("15/02/2020"));
 		
 	    /** creation of two library sections **/
-		Library_section science = new Library_section("science",1,"section for sceince books and periodicals");
-		Library_section nature = new Library_section("nature",1,"section for nature and wildlife books and periodicals");
+		Library_section science = new Library_section("science","section for sceince books and periodicals");
+		Library_section nature = new Library_section("nature","section for nature and wildlife books and periodicals");
 		
 		/** adding the material to the appropriate section
 		 * book material where bought and added the same date to different library sections

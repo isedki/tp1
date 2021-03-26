@@ -2,6 +2,7 @@ package tp1;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public abstract class User {
 
@@ -15,10 +16,15 @@ public abstract class User {
 	 * @param password
 	 * @param list_of_books
 	 */
-	public User(int id, String name, String email, String phone_number, int number_books_allowed,
+	
+
+	
+	public User(String name, String email, String phone_number, int number_books_allowed,
 			boolean is_blacklisted, String password) {
 		super();
-		this.id = id;
+		//Implementation of unique student id 
+		//the id is generated automatically and is unique by definition
+		this.id = UUID.randomUUID().toString();
 		this.name = name;
 		this.email = email;
 		this.phone_number = phone_number;
@@ -52,11 +58,11 @@ public abstract class User {
 	/**
 	 * @param id the id to set
 	 */
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
-	private int id;
+	private String id;
 	private String name;
 	private String email;
 	private String phone_number;
@@ -76,7 +82,10 @@ public abstract class User {
 	 * @param password the password to set
 	 */
 	public void setPassword(String password) {
+		//the password is not set unless it is longer than 8 characters
+		if(password.length() >= 8) {
 		this.password = password;
+		}
 	}
 
 	/**
@@ -124,14 +133,14 @@ public abstract class User {
 	/**
 	 * @return the student_id
 	 */
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 
 	/**
 	 * @param student_id the student_id to set
 	 */
-	public void setStudent_id(int id) {
+	public void setStudent_id(String id) {
 		this.id = id;
 	}
 
@@ -174,17 +183,28 @@ public abstract class User {
 	
 	//ad a book to the section
 	public void borrowNewMaterial(Library_material mat) {
-		if(!is_blacklisted) {
-		list_of_books.add(mat);
+		//the user can borrow another books if he has booked less than the number he is entitled to
+		if (list_of_books.size()< getNumber_books_allowed() 
+				//the material should be available
+				|| mat.availability 
+				//the book is not already contained in the user list of borrowed books
+				|| !list_of_books.contains(mat)) {
+			//if the user is blacklisted he can not borrow any material from the library
+			if(!is_blacklisted) {
+			list_of_books.add(mat);
+			}
 		}
 		
 	}
 	
 	//remove a book from the section
 	public void returnMaterial(Library_material mat) {
+		//removing the boof from the list of booked material
 		if (list_of_books.contains(mat)) {
 			list_of_books.remove(mat);
 		}
+		//the material is available
+		mat.setAvailability(true);
 	}
 
 }

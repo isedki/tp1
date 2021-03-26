@@ -30,9 +30,9 @@ public class Student extends User {
 	 * @param list_of_books
 	 * @param student_id
 	 */
-	public Student(int id, String name, String email, String phone_number, int number_books_allowed,
+	public Student(String name, String email, String phone_number, int number_books_allowed,
 			boolean is_blacklisted, String password,  String student_id) {
-		super(id, name, email, phone_number, number_books_allowed, is_blacklisted, password);
+		super( name, email, phone_number, number_books_allowed, is_blacklisted, password);
 		this.student_id = student_id;
 	}
 

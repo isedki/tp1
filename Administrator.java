@@ -1,6 +1,6 @@
 package tp1;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 public class Administrator extends User{
@@ -26,19 +26,21 @@ public class Administrator extends User{
 	 */
 	public Administrator(int id, String name, String email, String phone_number, int number_books_allowed,
 			boolean is_blacklisted, String password, String staff_id, List<User> blacklisted, List<User> registred) {
-		super(id, name, email, phone_number, number_books_allowed, is_blacklisted, password);
+		super(name, email, phone_number, number_books_allowed, is_blacklisted, password);
 		this.staff_id = staff_id;
 		this.blacklisted = blacklisted;
 		this.registred = registred;
 	}
 
 	public void addBlacklistUser(User user) {
+		//adding a user to the list of blacklisted users
 		user.setIs_blacklisted(true);
 		blacklisted.add(user);
 	}
 	
 	public void removeBlacklistUser(User user) {
 		user.setIs_blacklisted(false);
+		//removing a user from the list of blacklisted
 		if (blacklisted.contains(user)){
 			blacklisted.remove(user);
 		}

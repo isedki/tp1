@@ -2,10 +2,11 @@ package tp1;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class Library_section {
 	private String name;
-	private int id;
+	private String id;
 	private String description;
 	private List<Library_material> list_of_books;
 	
@@ -16,10 +17,11 @@ public class Library_section {
 	 * @param description
 	 * @param list_of_books
 	 */
-	public Library_section(String name, int id, String description) {
+	public Library_section(String name,  String description) {
 		super();
 		this.name = name;
-		this.id = id;
+		//library section is unique
+		this.id = UUID.randomUUID().toString();
 		this.description = description;
 		this.list_of_books = new ArrayList<Library_material>();
 	}
@@ -38,13 +40,13 @@ public class Library_section {
 	/**
 	 * @return the id
 	 */
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 	/**
 	 * @param id the id to set
 	 */
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	/**
@@ -57,7 +59,11 @@ public class Library_section {
 	 * @param description the description to set
 	 */
 	public void setDescription(String description) {
-		this.description = description;
+		//Description for each library section should be at least 20 characters but no mare than 200 characters
+		if(description.length()>20 || description.length()<200 ) {
+			this.description = description;
+		}
+		
 	}
 	/**
 	 * @return the list_of_books
@@ -74,8 +80,10 @@ public class Library_section {
 	
 	//ad a book to the section
 	public void addNewMaterial(Library_material mat) {
+		//we add the material to a section only if it is not contained in this section
+		if (!list_of_books.contains(mat)) {
 		list_of_books.add(mat);
-		
+		}
 	}
 	
 	//remove a book from the section

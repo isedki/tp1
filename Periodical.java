@@ -20,8 +20,8 @@ public class Periodical extends Library_material {
 		this.issue_date = issue_date;
 	}
 
-	public Periodical(int id, String title, Boolean availability, int max_reservation_period, String genre, Date issue_date) {
-		super(id, title, availability, max_reservation_period, genre);
+	public Periodical( String title, Boolean availability, int max_reservation_period, String genre, Date issue_date) {
+		super( title, availability, max_reservation_period, genre);
 		this.issue_date = issue_date;
 	}
 

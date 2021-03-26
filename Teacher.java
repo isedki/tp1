@@ -30,9 +30,9 @@ public class Teacher extends User {
 	 * @param list_of_books
 	 * @param school_id
 	 */
-	public Teacher(int id, String name, String email, String phone_number, int number_books_allowed,
+	public Teacher( String name, String email, String phone_number, int number_books_allowed,
 			boolean is_blacklisted, String password,  String school_id) {
-		super(id, name, email, phone_number, number_books_allowed, is_blacklisted, password);
+		super( name, email, phone_number, number_books_allowed, is_blacklisted, password);
 		this.school_id = school_id;
 	}
 

@@ -1,7 +1,9 @@
 package tp1;
 
+import java.util.UUID;
+
 public abstract class Library_material {
-	public int id;
+	public String id;
 	public String title;
 	public Boolean availability;
 	private int max_reservation_period;
@@ -12,7 +14,7 @@ public abstract class Library_material {
 	/**
 	 * @return the id
 	 */
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 	/**
@@ -22,18 +24,25 @@ public abstract class Library_material {
 	 * @param max_reservation_period
 	 * @param genre
 	 */
-	public Library_material(int id, String title, Boolean availability, int max_reservation_period, String genre) {
+	public Library_material(String title, Boolean availability, int max_reservation_period, String genre) {
 		super();
-		this.id = id;
+		//unique id for each library material
+		this.id = UUID.randomUUID().toString();
 		this.title = title;
 		this.availability = availability;
-		this.max_reservation_period = max_reservation_period;
+		
+		if(this instanceof Book) {
+			this.max_reservation_period = 30;
+		}
+		else if (this instanceof Periodical) {
+			this.max_reservation_period = 7;
+		}
 		this.genre = genre;
 	}
 	/**
 	 * @param id the id to set
 	 */
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	/**
