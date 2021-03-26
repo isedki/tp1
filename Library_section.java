@@ -87,6 +87,7 @@ public class Library_section {
 	}
 	
 	//remove a book from the section
+	//toto
 	public void removeMaterial(Library_material mat) {
 		if (list_of_books.contains(mat)) {
 			list_of_books.remove(mat);
