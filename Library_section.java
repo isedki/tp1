@@ -9,6 +9,7 @@ public class Library_section {
 	private String id;
 	private String description;
 	private List<Library_material> list_of_books;
+	private String status;
 	
 	
 	/**
@@ -91,6 +92,11 @@ public class Library_section {
 		if (list_of_books.contains(mat)) {
 			list_of_books.remove(mat);
 		}
+	}
+	
+	//remove a book from the section
+	public void markMaterialAsDamaged() {
+		status = "damaged";
 	}
 	
 
