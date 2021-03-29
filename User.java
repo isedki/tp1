@@ -184,6 +184,7 @@ public abstract class User {
 	//ad a book to the section
 	public void borrowNewMaterial(Library_material mat) {
 		//the user can borrow another books if he has booked less than the number he is entitled to
+		
 		if (list_of_books.size()< getNumber_books_allowed() 
 				//the material should be available
 				|| mat.availability 

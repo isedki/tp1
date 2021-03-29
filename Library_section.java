@@ -9,7 +9,7 @@ public class Library_section {
 	private String id;
 	private String description;
 	private List<Library_material> list_of_books;
-	private String status;
+	private boolean not_damaged;
 	
 	
 	/**
@@ -82,8 +82,10 @@ public class Library_section {
 	//ad a book to the section
 	public void addNewMaterial(Library_material mat) {
 		//we add the material to a section only if it is not contained in this section
-		if (!list_of_books.contains(mat)) {
-		list_of_books.add(mat);
+		if(not_damaged) {
+			if (!list_of_books.contains(mat)) {
+			list_of_books.add(mat);
+			}
 		}
 	}
 	
@@ -96,7 +98,19 @@ public class Library_section {
 	
 	//remove a book from the section
 	public void markMaterialAsDamaged() {
-		status = "damaged";
+		not_damaged = false;
+	}
+	/**
+	 * @return the not_damaged
+	 */
+	public boolean isNot_damaged() {
+		return not_damaged;
+	}
+	/**
+	 * @param not_damaged the not_damaged to set
+	 */
+	public void setNot_damaged(boolean not_damaged) {
+		this.not_damaged = not_damaged;
 	}
 	
 
